@@ -1,5 +1,5 @@
 from kaggle_environments import make
-import QTable
+import QTable as QT
 import numpy as np
 from random import choice
 from tqdm.notebook import tqdm
@@ -11,7 +11,7 @@ class QLearningAgent():
     def __init__(self, env, epsilon=0.99):
         self.env = env
         self.action = list(range(self.env.configuration.columns))
-        self.q_table = QTable(self.action)
+        self.q_table = QT.QTable(self.action)
         self.epsilon = epsilon
         self.reward_log = []
     
