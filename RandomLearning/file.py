@@ -8,4 +8,4 @@ def write_agent_to_file(function, file):
         f.write(inspect.getsource(function))
 
 # エージェントファイルをファイルに書き出す
-write_agent_to_file(my_agent.my_agent, "submission.py")
+write_agent_to_file(my_agent.my_agent, "../submission.py")

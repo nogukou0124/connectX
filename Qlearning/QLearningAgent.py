@@ -10,8 +10,8 @@ trainer = env.train([None, "random"])
 class QLearningAgent():
     def __init__(self, env, epsilon=0.99):
         self.env = env
-        self.action = list(range(self.env.configuration.columns))
-        self.q_table = QT.QTable(self.action)
+        self.actions = list(range(self.env.configuration.columns))
+        self.q_table = QT.QTable(self.actions)
         self.epsilon = epsilon
         self.reward_log = []
     
@@ -19,7 +19,7 @@ class QLearningAgent():
     def policy(self, state):
         if np.random.random() < self.epsilon:
             # epsilonの割合で、ランダムにactionを選択する
-            return choice([c for c in range(len(self.action)) if state.board[c] == 0])
+            return choice([c for c in range(len(self.actions)) if state.board[c] == 0])
         else:
             # ゲーム上選択可能で、Q値が最大なactionを選択する
             q_values = self.q_table.get_q_values(state)
