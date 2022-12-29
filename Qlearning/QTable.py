@@ -26,5 +26,8 @@ class QTable():
     # Q値の更新
     def update(self, state, action, add_q):
         state_key = self.get_state_key(state)
-        self.Q[state_key] = [q + add_q if idx == action else q for idx, q in enumerate(self.Q[state_key])]
+        if state_key in self.Q:
+            self.Q[state_key] = [q + add_q if idx == action else q for idx, q in enumerate(self.Q[state_key])]
+        else:
+            self.Q[state_key] = [0] * len(self.actions)
         
